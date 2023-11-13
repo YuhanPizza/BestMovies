@@ -1,4 +1,6 @@
 using BestMovies.Data;
+using BestMovies.Interfaces;
+using BestMovies.Repository;
 using Microsoft.EntityFrameworkCore;
 using RunGroopWebApp.Data;
 
@@ -6,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IClubRepository, ClubRepository>(); // you have to bring these in since you added them.
+builder.Services.AddScoped<IRaceRepository, RaceRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

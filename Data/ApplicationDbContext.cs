@@ -14,5 +14,9 @@ namespace BestMovies.Data
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Address> Addresses { get; set; }
 
+        internal void Delete(Club club)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
