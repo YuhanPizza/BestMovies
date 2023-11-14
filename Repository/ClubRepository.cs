@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BestMovies.Repository
 {
+    //dependency injection and repository pattern
     public class ClubRepository : IClubRepository //when you inherit from an interface make sure you bring in all of the methods
     {
         private readonly ApplicationDbContext _context; //getting the database tables
