@@ -53,5 +53,45 @@ namespace BestMovies.Controllers
             TempData["Error"] = "Wrong Credentails. Please, try again";
             return View(loginViewModel);
         }
+        public IActionResult Register() //get
+        {
+            var response = new RegisterViewModel();//just incase you reloaded it, it will hold the values for you.
+            return View(response); //just incase you reloaded it, it will hold the values for you.
+        }
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
+        {
+            //model state is when you post, whats gonna happen is the values that you post that you send to this controller/endpoint its gonna pass in
+            //logically into this so those values are gonna be placed inside of it. the controller will then do something with the values it recieves
+            if (!ModelState.IsValid) //model state is a static class that gives information about the "model state"
+            {
+                return View(registerViewModel);
+            }
+            var user = await _userManager.FindByEmailAsync(registerViewModel.EmailAddress); //looks if that email already exists in the database 
+            if(user  != null)
+            {
+                TempData["Error"] = "This email address is already in use";
+                return View(registerViewModel);
+            }
+            var newUser = new AppUser() //creates an appuser from registerViewModel data recieved
+            {
+                Email = registerViewModel.EmailAddress,
+                UserName = registerViewModel.EmailAddress,
+            };
+            var newUserResponse = await _userManager.CreateAsync(newUser, registerViewModel.Password);
+
+            if(newUserResponse.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Race");
+        }
+
     }
 }
