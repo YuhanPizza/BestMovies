@@ -1,6 +1,8 @@
 using BestMovies.Data;
+using BestMovies.Helpers;
 using BestMovies.Interfaces;
 using BestMovies.Repository;
+using BestMovies.Services;
 using Microsoft.EntityFrameworkCore;
 using RunGroopWebApp.Data;
 
@@ -10,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IClubRepository, ClubRepository>(); // you have to bring these in since you added them.
 builder.Services.AddScoped<IRaceRepository, RaceRepository>();
+builder.Services.AddScoped<IPhotoService, PhotoService>(); //dependency injection
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

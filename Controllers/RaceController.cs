@@ -2,6 +2,7 @@
 using BestMovies.Interfaces;
 using BestMovies.Models;
 using BestMovies.Repository;
+using BestMovies.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,9 +11,12 @@ namespace BestMovies.Controllers
     public class RaceController : Controller
     {
         private readonly IRaceRepository _raceRepository;
-        public RaceController(IRaceRepository racerepository)
+        private readonly IPhotoService _photoService;
+        public RaceController(IRaceRepository racerepository, IPhotoService photoService)
         {
             _raceRepository = racerepository;
+            _photoService = photoService;
+
         }
         public async Task<IActionResult> Index()
         {
@@ -30,14 +34,33 @@ namespace BestMovies.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Race race)
+        public async Task<IActionResult> Create(CreateRaceViewModel raceVM)
         {
-            if (!ModelState.IsValid) //checks for validation and returns a model state validation error at create.cshtml asp-validation that I setup 
+            if (ModelState.IsValid) //checks for validation and returns a model state validation error at create.cshtml asp-validation that I setup 
             {
-                return View(race);
+                //return View(race);
+                var result = await _photoService.AddPhotoAsync(raceVM.Image);
+                var race = new Race
+                {
+                    Title = raceVM.Title,
+                    Description = raceVM.Description,
+                    Image = result.Url.ToString(),
+                    Address = new Address
+                    {
+                        Street = raceVM.Address.Street,
+                        City = raceVM.Address.City,
+                        State = raceVM.Address.State,
+                    }
+                };
+                _raceRepository.Add(race);
+                return RedirectToAction("Index");
             }
-            _raceRepository.Add(race);
-            return RedirectToAction("Index");
+            else
+            {
+                ModelState.AddModelError("", "Photo upload failed");
+
+            }
+            return View(raceVM);
         }
     }
 }
