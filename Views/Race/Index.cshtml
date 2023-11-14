@@ -19,8 +19,8 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <!-- has to be a for some reason if the tag starts as button the helpers have some issue-->
-                                    <a type="btn btn-success" asp-controller="race" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a> 
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <a type="btn btn-success" asp-controller="race" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
+                                    <a type="btn btn-success" asp-controller="race" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
                                 </div>
                                 <small class="text-body-secondary">@item.RaceCategory</small>
                             </div>

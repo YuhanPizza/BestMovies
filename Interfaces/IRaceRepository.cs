@@ -9,7 +9,8 @@ namespace BestMovies.Interfaces
         //get commands
         Task<IEnumerable<Race>> GetAll();
         Task<Race> GetByIdAsync(int id);
-        Task<IEnumerable<Race>> GetAllRacesByCity(string city);
+		Task<Race> GetByIdAsyncNoTracking(int id);
+		Task<IEnumerable<Race>> GetAllRacesByCity(string city);
 
         //cruds
         bool Add(Race race);

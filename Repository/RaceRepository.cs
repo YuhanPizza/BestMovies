@@ -38,8 +38,11 @@ namespace BestMovies.Repository
         {
             return await _context.Races.Include(i=> i.Address).FirstOrDefaultAsync(i=> i.Id == id); //add include so it doesnt do lazy loading
         }
-
-        public bool Save()
+		public async Task<Race> GetByIdAsyncNoTracking(int id)
+		{
+			return await _context.Races.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync(i => i.Id == id); //add include so it doesnt do lazy loading
+		}
+		public bool Save()
         {
             var saved = _context.SaveChanges();
             return saved > 0 ? true: false;
