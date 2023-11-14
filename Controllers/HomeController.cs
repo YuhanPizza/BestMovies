@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 //controllers control how your data is presented it is like a folder type address where the route you type in decides
-//which controlelr is called. route -> controller -> model
+//which controller is called. route -> controller -> model
 
 namespace BestMovies.Controllers
 {
