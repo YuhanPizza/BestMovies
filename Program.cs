@@ -1,8 +1,11 @@
 using BestMovies.Data;
 using BestMovies.Helpers;
 using BestMovies.Interfaces;
+using BestMovies.Models;
 using BestMovies.Repository;
 using BestMovies.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RunGroopWebApp.Data;
 
@@ -18,12 +21,18 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+//whenever wiring up identity framework You have to add what you want and what you need.
+builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddMemoryCache(); //you need this so you dont get errors
+builder.Services.AddSession(); //gives us cookie authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(); 
 
 var app = builder.Build();
 if(args.Length == 1 && args[0].ToLower() == "seeddata")
 {
-    //Seed.SeedUsersAndRolesAsync(app);
-    Seed.SeedData(app);
+    await Seed.SeedUsersAndRolesAsync(app);
+    //Seed.SeedData(app);
 }
 
 // Configure the HTTP request pipeline.

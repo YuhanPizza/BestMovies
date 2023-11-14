@@ -1,9 +1,10 @@
 ﻿using BestMovies.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BestMovies.Data
 {
-    public class ApplicationDbContext :DbContext //inherits from entityframeworkcore
+    public class ApplicationDbContext : IdentityDbContext<AppUser> //inherits from entityframeworkcore
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -14,9 +15,5 @@ namespace BestMovies.Data
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Address> Addresses { get; set; }
 
-        internal void Delete(Club club)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
