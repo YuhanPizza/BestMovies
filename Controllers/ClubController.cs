@@ -12,10 +12,12 @@ namespace BestMovies.Controllers
         //private readonly ApplicationDbContext _context; //database 
         private readonly IClubRepository _clubRepository; //replaces _context so data is not directly handled
         private readonly IPhotoService _photoService;
-        public ClubController(IClubRepository clubRepository, IPhotoService photoService)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public ClubController(IClubRepository clubRepository, IPhotoService photoService, IHttpContextAccessor httpContextAccessor)
         {
             _clubRepository = clubRepository;
             _photoService = photoService;
+            _httpContextAccessor = httpContextAccessor;
         }
         public async Task<IActionResult> Index() //the name of the function corellates with your view. 
         {//gets the model then returns the view 
@@ -33,7 +35,12 @@ namespace BestMovies.Controllers
         }
         public IActionResult Create() //can be syncronous 
         {
-            return View();
+            var curUserId = _httpContextAccessor.HttpContext.User.GetUserId();
+            var createClubViewModel = new CreateClubViewModel
+            {
+                AppUserId = curUserId
+            };
+            return View(createClubViewModel);
         }
 
         [HttpPost]
@@ -48,6 +55,7 @@ namespace BestMovies.Controllers
                     Title = clubVM.Title,
                     Description = clubVM.Description,
                     Image = result.Url.ToString(),
+                    AppUserId = clubVM.AppUserId,
                     Address = new Address
                     {
                         Street = clubVM.Address.Street,

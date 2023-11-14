@@ -12,11 +12,12 @@ namespace BestMovies.Controllers
     {
         private readonly IRaceRepository _raceRepository;
         private readonly IPhotoService _photoService;
-        public RaceController(IRaceRepository racerepository, IPhotoService photoService)
+		private readonly IHttpContextAccessor _httpContextAccessor;
+        public RaceController(IRaceRepository racerepository, IPhotoService photoService, IHttpContextAccessor httpContextAccessor)
         {
             _raceRepository = racerepository;
             _photoService = photoService;
-
+            _httpContextAccessor = httpContextAccessor;
         }
         public async Task<IActionResult> Index()
         {
@@ -30,7 +31,12 @@ namespace BestMovies.Controllers
         }
         public IActionResult Create() //can be syncronous 
         {
-            return View();
+			var curUserId = _httpContextAccessor.HttpContext?.User.GetUserId();
+			var createRaceViewModel = new CreateRaceViewModel()
+			{
+				AppUserId = curUserId
+			};
+            return View(createRaceViewModel);
         }
 
         [HttpPost]
@@ -45,6 +51,7 @@ namespace BestMovies.Controllers
                     Title = raceVM.Title,
                     Description = raceVM.Description,
                     Image = result.Url.ToString(),
+                    AppUserId = raceVM.AppUserId,
                     Address = new Address
                     {
                         Street = raceVM.Address.Street,
