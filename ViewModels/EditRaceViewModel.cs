@@ -13,5 +13,6 @@ namespace BestMovies.ViewModels
 		public int AddressId { get; set; }
 		public Address Address { get; set; }
 		public RaceCategory RaceCategory { get; set; }
-	}
+        public string AppUserId { get; set; }
+    }
 }

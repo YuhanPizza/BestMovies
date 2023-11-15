@@ -83,8 +83,10 @@ namespace BestMovies.Controllers
 				AddressId = race.AddressId,
 				Address = race.Address,
 				URL = race.Image,
-				RaceCategory = race.RaceCategory
-			};
+				RaceCategory = race.RaceCategory,
+                AppUserId = race.AppUserId,
+
+            };
 			return View(raceVM);
 		}
 		[HttpPost]
@@ -116,7 +118,8 @@ namespace BestMovies.Controllers
 					Image = photoResult.Url.ToString(),
 					AddressId = raceVM.AddressId,
 					Address = raceVM.Address,
-				};
+                    AppUserId = raceVM.AppUserId,
+                };
 
 				_raceRepository.Update(race);
 				return RedirectToAction("Index");

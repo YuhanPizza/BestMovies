@@ -85,7 +85,8 @@ namespace BestMovies.Controllers
                 AddressId = club.AddressId, 
                 Address = club.Address, 
                 URL = club.Image, 
-                ClubCategory = club.ClubCategory  
+                ClubCategory = club.ClubCategory,
+                AppUserId = club.AppUserId,
             };
             return View(clubVM);
         }
@@ -117,6 +118,7 @@ namespace BestMovies.Controllers
                     Image = photoResult.Url.ToString(),
                     AddressId = clubVM.AddressId,
                     Address = clubVM.Address,
+                    AppUserId = clubVM.AppUserId,
                 };
 
                 _clubRepository.Update(club);

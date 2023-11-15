@@ -1,6 +1,7 @@
 ﻿using BestMovies.Data;
 using BestMovies.Interfaces;
 using BestMovies.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BestMovies.Repository
 { //remember to add these on program.cs build.service.addscope
@@ -27,6 +28,24 @@ namespace BestMovies.Repository
             var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
             var userRaces = _context.Races.Where(r => r.AppUser.Id == curUser.ToString());
             return userRaces.ToList();
+        }
+        public async Task<AppUser> GetUserById(string id)
+        {
+            return await _context.Users.FindAsync(id);
+        }
+        public async Task<AppUser> GetByIdNoTracking(string id)
+        {
+            return await _context.Users.Where(u=> u.Id == id).AsNoTracking().FirstOrDefaultAsync();
+        }
+        public bool Update(AppUser user)
+        {
+            _context.Users.Update(user);
+            return Save();
+        }
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
         }
     }
 }

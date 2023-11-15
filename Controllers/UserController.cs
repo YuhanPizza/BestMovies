@@ -24,6 +24,7 @@ namespace BestMovies.Controllers
                     UserName = user.UserName,
                     Pace = user.Pace,
                     Mileage = user.Milage,
+                    ProfileImageUrl = user.ProfileImageUrl,
                 };
                 result.Add(userViewModel);
             }
