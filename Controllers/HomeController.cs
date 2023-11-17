@@ -15,9 +15,9 @@ namespace BestMovies.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IClubRepository _clubRepository;
+        private readonly ITheatreRepository _clubRepository;
 
-        public HomeController(ILogger<HomeController> logger, IClubRepository clubRepository)
+        public HomeController(ILogger<HomeController> logger, ITheatreRepository clubRepository)
         {
             _logger = logger;
             _clubRepository = clubRepository;
@@ -42,18 +42,19 @@ namespace BestMovies.Controllers
                 homeViewModel.State = ipInfo.Region;
                 if (homeViewModel.City != null)// if we get anything back
                 {
-                    homeViewModel.Clubs = await _clubRepository.GetClubByCity(homeViewModel.City);
+                    homeViewModel.Theatres = await _clubRepository.GetTheatreByCity(homeViewModel.City);
                 }
                 else
                 {
-                    homeViewModel.Clubs = null;
+                    homeViewModel.Theatres = null;
                 }
                 return View(homeViewModel);
 
             }
             catch (Exception ex)
             {
-                homeViewModel.Clubs = null;
+                homeViewModel.Theatres = null;
+                Console.WriteLine($"Error occured: {ex}");
             }
             return View(homeViewModel);
         }

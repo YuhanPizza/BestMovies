@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BestMovies.Models
 {
-    public class Club
+    public class Theatre
     {
         [Key]//defined key
         public int Id { get; set; } //convention based entity framework automatically detects Id.
@@ -15,7 +15,7 @@ namespace BestMovies.Models
         //primary key is parent, foreign key is child. Only 1 primary key can exist but many foreign key can exist.
         public int AddressId { get; set; }
         public Address Address { get; set; } //one to many relationship
-        public ClubCategory ClubCategory { get; set; }
+        public TheatreCategory TheatreCategory { get; set; }
         [ForeignKey("AppUser")]
 
         public string? AppUserId { get; set; }

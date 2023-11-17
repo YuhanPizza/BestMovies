@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BestMovies.Models
 {
-    public class Race
+    public class Movie
     {
         [Key]
         public int Id { get; set; }
@@ -14,7 +14,7 @@ namespace BestMovies.Models
         [ForeignKey("Address")]
         public int AddressId { get; set; }
         public Address Address { get; set; }
-        public RaceCategory RaceCategory { get; set; }
+        public MovieCategory MovieCategory { get; set; }
         [ForeignKey("AppUser")]
         public string? AppUserId { get; set; }
         public AppUser? AppUser { get; set; } //simplified version of a Getter/setter Function or an Accessor Function and Mutator Function

@@ -42,7 +42,7 @@ namespace BestMovies.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, false, false);
                     if(result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Race");
+                        return RedirectToAction("Index", "Movie");
                     }
                 }
                 //password is incorrect
@@ -90,7 +90,7 @@ namespace BestMovies.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Race");
+            return RedirectToAction("Index", "Movie");
         }
 
     }

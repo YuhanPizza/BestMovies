@@ -4,7 +4,7 @@ using BestMovies.Models;
 using Microsoft.AspNetCore.Identity;
 
 
-namespace RunGroopWebApp.Data
+namespace BestMovies.Data
 {
     public class Seed
     {
@@ -16,16 +16,16 @@ namespace RunGroopWebApp.Data
 
                 context.Database.EnsureCreated();
 
-                if (!context.Clubs.Any())
+                if (!context.Theatres.Any())
                 {
-                    context.Clubs.AddRange(new List<Club>()
+                    context.Theatres.AddRange(new List<Theatre>()
                     {
-                        new Club()
+                        new Theatre()
                         {
-                            Title = "Running Club 1",
-                            Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
+                            Title = "Cineplex Cinema Empress Walk",
+                            Image = "https://res.cloudinary.com/dusfrwsg5/image/upload/v1700191021/Cinema_wpvqfd.png",
                             Description = "This is the description of the first cinema",
-                            ClubCategory = ClubCategory.City,
+                            TheatreCategory = TheatreCategory.IMAX,
                             Address = new Address()
                             {
                                 Street = "123 Main St",
@@ -33,38 +33,38 @@ namespace RunGroopWebApp.Data
                                 State = "NC"
                             }
                          },
-                        new Club()
+                        new Theatre()
                         {
-                            Title = "Running Club 2",
-                            Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
+                            Title = "Imagine Cinemas Promenade",
+                            Image = "https://res.cloudinary.com/dusfrwsg5/image/upload/v1700191021/Cinema_wpvqfd.png",
+                            Description = "This is the description of the second cinema",
+                            TheatreCategory = TheatreCategory.Premium,
+                            Address = new Address()
+                            {
+                                Street = "123 Main St",
+                                City = "Charlotte",
+                                State = "NC"
+                            }
+                        },
+                        new Theatre()
+                        {
+                            Title = "Cineplex Cinemas Fairview Mall",
+                            Image = "https://res.cloudinary.com/dusfrwsg5/image/upload/v1700191021/Cinema_wpvqfd.png",
+                            Description = "This is the description of the second cinema",
+                            TheatreCategory = TheatreCategory.DriveIn,
+                            Address = new Address()
+                            {
+                                Street = "123 Main St",
+                                City = "Charlotte",
+                                State = "NC"
+                            }
+                        },
+                        new Theatre()
+                        {
+                            Title = "Silver City Richmond Hill Cinemas",
+                            Image = "https://res.cloudinary.com/dusfrwsg5/image/upload/v1700191021/Cinema_wpvqfd.png",
                             Description = "This is the description of the first cinema",
-                            ClubCategory = ClubCategory.Endurance,
-                            Address = new Address()
-                            {
-                                Street = "123 Main St",
-                                City = "Charlotte",
-                                State = "NC"
-                            }
-                        },
-                        new Club()
-                        {
-                            Title = "Running Club 3",
-                            Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
-                            Description = "This is the description of the first club",
-                            ClubCategory = ClubCategory.Trail,
-                            Address = new Address()
-                            {
-                                Street = "123 Main St",
-                                City = "Charlotte",
-                                State = "NC"
-                            }
-                        },
-                        new Club()
-                        {
-                            Title = "Running Club 3",
-                            Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
-                            Description = "This is the description of the first club",
-                            ClubCategory = ClubCategory.City,
+                            TheatreCategory = TheatreCategory.Multiplex,
                             Address = new Address()
                             {
                                 Street = "123 Main St",
@@ -76,16 +76,16 @@ namespace RunGroopWebApp.Data
                     context.SaveChanges();
                 }
                 //Races
-                if (!context.Races.Any())
+                if (!context.Movies.Any())
                 {
-                    context.Races.AddRange(new List<Race>()
+                    context.Movies.AddRange(new List<Movie>()
                     {
-                        new Race()
+                        new Movie()
                         {
-                            Title = "Running Race 1",
-                            Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
-                            Description = "This is the description of the first race",
-                            RaceCategory = RaceCategory.Marathon,
+                            Title = "Mask of Zorro",
+                            Image = "https://m.media-amazon.com/images/M/MV5BMzg4ZjQ4OGUtZjkxMi00Y2I2LWEzNTAtODI2ZjkxMGVjNTQwXkEyXkFqcGdeQXVyNjgxNTAwNjQ@._V1_.jpg",
+                            Description = "This is the description of the first movie",
+                            MovieCategory = MovieCategory.Western,
                             Address = new Address()
                             {
                                 Street = "123 Main St",
@@ -93,12 +93,12 @@ namespace RunGroopWebApp.Data
                                 State = "NC"
                             }
                         },
-                        new Race()
+                        new Movie()
                         {
-                            Title = "Running Race 2",
-                            Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
-                            Description = "This is the description of the first race",
-                            RaceCategory = RaceCategory.Ultra,
+                            Title = "Barbie",
+                            Image = "https://assets.aboutamazon.com/dims4/default/7856190/2147483647/strip/true/crop/1919x1080+1+0/resize/1320x743!/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2F7f%2Fe6%2Fb76966994e56a97dbeba44f56009%2Fbarbie-hero.jpg",
+                            Description = "This is the description of the first movie",
+                            MovieCategory = MovieCategory.Comedy,
                             AddressId = 5,
                             Address = new Address()
                             {

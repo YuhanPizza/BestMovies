@@ -11,8 +11,8 @@ namespace BestMovies.Data
             
         }
         //very important lets us pull stuff out from the database
-        public DbSet<Race> Races { get; set; }
-        public DbSet<Club> Clubs { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Theatre> Theatres { get; set; }
         public DbSet<Address> Addresses { get; set; }
 
     }

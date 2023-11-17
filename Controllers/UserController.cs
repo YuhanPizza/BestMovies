@@ -22,8 +22,6 @@ namespace BestMovies.Controllers
                 {
                     Id = user.Id,
                     UserName = user.UserName,
-                    Pace = user.Pace,
-                    Mileage = user.Milage,
                     ProfileImageUrl = user.ProfileImageUrl,
                 };
                 result.Add(userViewModel);
@@ -33,14 +31,13 @@ namespace BestMovies.Controllers
         public async Task<IActionResult> Detail(string id) //because its a guid
         {
             var user = await _userRepository.GetUserById(id);
-            var userDetailViewModel = new UserDetailViewModel()
+            var userViewModel = new UserViewModel()
             {
                 Id = user.Id,
                 UserName = user.UserName,
-                Pace = user.Pace,
-                Mileage = user.Milage,
+                ProfileImageUrl = user.ProfileImageUrl,
             };
-            return View(userDetailViewModel);
+            return View(userViewModel);
         }
     }
 }

@@ -78,9 +78,6 @@ namespace BestMovies.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int?>("Milage")
-                        .HasColumnType("int");
-
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -88,9 +85,6 @@ namespace BestMovies.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<int?>("Pace")
-                        .HasColumnType("int");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -132,7 +126,7 @@ namespace BestMovies.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("BestMovies.Models.Club", b =>
+            modelBuilder.Entity("BestMovies.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -146,9 +140,6 @@ namespace BestMovies.Migrations
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("ClubCategory")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -156,6 +147,9 @@ namespace BestMovies.Migrations
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MovieCategory")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -167,10 +161,10 @@ namespace BestMovies.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Clubs");
+                    b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("BestMovies.Models.Race", b =>
+            modelBuilder.Entity("BestMovies.Models.Theatre", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -192,7 +186,7 @@ namespace BestMovies.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RaceCategory")
+                    b.Property<int>("TheatreCategory")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -205,7 +199,7 @@ namespace BestMovies.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Races");
+                    b.ToTable("Theatres");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -350,7 +344,7 @@ namespace BestMovies.Migrations
                     b.Navigation("Address");
                 });
 
-            modelBuilder.Entity("BestMovies.Models.Club", b =>
+            modelBuilder.Entity("BestMovies.Models.Movie", b =>
                 {
                     b.HasOne("BestMovies.Models.Address", "Address")
                         .WithMany()
@@ -359,7 +353,7 @@ namespace BestMovies.Migrations
                         .IsRequired();
 
                     b.HasOne("BestMovies.Models.AppUser", "AppUser")
-                        .WithMany("Clubs")
+                        .WithMany("Movies")
                         .HasForeignKey("AppUserId");
 
                     b.Navigation("Address");
@@ -367,7 +361,7 @@ namespace BestMovies.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("BestMovies.Models.Race", b =>
+            modelBuilder.Entity("BestMovies.Models.Theatre", b =>
                 {
                     b.HasOne("BestMovies.Models.Address", "Address")
                         .WithMany()
@@ -376,7 +370,7 @@ namespace BestMovies.Migrations
                         .IsRequired();
 
                     b.HasOne("BestMovies.Models.AppUser", "AppUser")
-                        .WithMany("Races")
+                        .WithMany("Theatres")
                         .HasForeignKey("AppUserId");
 
                     b.Navigation("Address");
@@ -437,9 +431,9 @@ namespace BestMovies.Migrations
 
             modelBuilder.Entity("BestMovies.Models.AppUser", b =>
                 {
-                    b.Navigation("Clubs");
+                    b.Navigation("Movies");
 
-                    b.Navigation("Races");
+                    b.Navigation("Theatres");
                 });
 #pragma warning restore 612, 618
         }

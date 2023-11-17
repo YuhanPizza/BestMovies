@@ -1,6 +1,6 @@
 ﻿@using BestMovies.Data.Enum;
 @using BestMovies.ViewModels;
-@model EditRaceViewModel
+@model EditTheatreViewModel
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -20,11 +20,11 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="RaceCategory">Club Category</label>
-        <select asp-for="RaceCategory" asp-items="@Html.GetEnumSelectList<RaceCategory>()" class="form-control">
+        <label asp-for="TheatreCategory">Theatre Category</label>
+        <select asp-for="TheatreCategory" asp-items="@Html.GetEnumSelectList<TheatreCategory>()" class="form-control">
             <option selected="selected" value="">--Select--</option>
         </select>
-        <span asp-validation-for="RaceCategory" class="text-danger"></span>
+        <span asp-validation-for="TheatreCategory" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Address.Street">Street</label>

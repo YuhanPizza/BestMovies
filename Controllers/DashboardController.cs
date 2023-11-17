@@ -23,20 +23,18 @@ namespace BestMovies.Controllers
         private void MapUserEdit(AppUser user, EditUserDashboardViewModel editVM, ImageUploadResult photoResult)
         {
             user.Id = editVM.Id;
-            user.Pace = editVM.Milage;
-            user.Milage = editVM.Milage;
             user.ProfileImageUrl = photoResult.Url.ToString();//cloudinary is going to give you your own url of where it is stored.
             user.City = editVM.City;
             user.State = editVM.State;
         }
         public async Task<IActionResult> Index()
 		{
-            var userRaces = await _dashboardRepository.GetAllUserRaces();
-            var userClubs = await _dashboardRepository.GetAllUserClubs();
+            var userMovies = await _dashboardRepository.GetAllUserMovies();
+            var userTheatres = await _dashboardRepository.GetAllUserTheatres();
             var dashboardViewModel = new DashboardViewModel()
             {
-                Races = userRaces,
-                Clubs = userClubs,
+                Movies = userMovies,
+                Theatres = userTheatres,
             };
             return View(dashboardViewModel);
 		}
@@ -51,8 +49,6 @@ namespace BestMovies.Controllers
             var editUserViewModel = new EditUserDashboardViewModel()
             {
                 Id = curUserId,
-                Pace = user.Pace,
-                Milage = user.Milage,
                 ProfileImageUrl = user.ProfileImageUrl,
                 City = user.City,
                 State = user.State,

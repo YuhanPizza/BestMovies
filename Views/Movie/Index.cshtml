@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Club> //IEnumerable since we are bringing back an entire list and not just one Club
-
+﻿@model IEnumerable<Movie>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
+
 <div class="album py-5 bg-body-tertiary">
 	<div class="container">
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -18,14 +18,15 @@
 							<p class="card-text">@item.Description</p>
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="btn-group">
-									<a type="btn btn-success" asp-controller="club" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
+									<!-- has to be a for some reason if the tag starts as button the helpers have some issue-->
+									<a type="btn btn-success" asp-controller="movie" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
 									@if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
 									{
-										<a type="btn btn-success" asp-controller="club" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
-										<a type="btn btn-success" asp-controller="club" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
+										<a type="btn btn-success" asp-controller="movie" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+										<a type="btn btn-success" asp-controller="movie" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
 									}
 								</div>
-								<small class="text-body-secondary">@item.ClubCategory</small>
+								<small class="text-body-secondary">@item.MovieCategory</small>
 							</div>
 						</div>
 					</div>

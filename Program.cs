@@ -7,15 +7,15 @@ using BestMovies.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using RunGroopWebApp.Data;
+
 //whole idea of aspdotnet its flexible and there is alot of boilerplate/infastructure for you but you still have to do alot of work to go with it.
 //identity will do alot of work for you
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IClubRepository, ClubRepository>(); // you have to bring these in since you added them.
-builder.Services.AddScoped<IRaceRepository, RaceRepository>();
+builder.Services.AddScoped<ITheatreRepository, TheatreRepository>(); // you have to bring these in since you added them.
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPhotoService, PhotoService>(); //dependency injection

@@ -1,11 +1,11 @@
 ﻿@using BestMovies.Data.Enum;
-@model Race
+@model Theatre
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
-<h1>Are you sure you want to delete this club?</h1>
+<h1>Are you sure you want to remove this theatre?</h1>
 
 <form method="post" asp-action="Delete" enctype="multipart/form-data">
     <input type="hidden" value="AddressId" id="AddressId" />
@@ -20,11 +20,11 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="RaceCategory">Race Category</label>
-        <select asp-for="RaceCategory" asp-items="@Html.GetEnumSelectList<RaceCategory>()" class="form-control">
+        <label asp-for="TheatreCategory">Theatre Category</label>
+        <select asp-for="TheatreCategory" asp-items="@Html.GetEnumSelectList<TheatreCategory>()" class="form-control">
             <option selected="selected" value="">--Select--</option>
         </select>
-        <span asp-validation-for="RaceCategory" class="text-danger"></span>
+        <span asp-validation-for="TheatreCategory" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Address.Street">Street</label>

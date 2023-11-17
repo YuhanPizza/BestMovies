@@ -3,7 +3,7 @@ using BestMovies.Models;
 
 namespace BestMovies.ViewModels
 {
-    public class EditClubViewModel
+    public class EditTheatreViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -12,7 +12,7 @@ namespace BestMovies.ViewModels
         public string? URL { get; set; }
         public int AddressId { get; set; } 
         public Address Address { get; set; }
-        public ClubCategory ClubCategory { get; set; }
+        public TheatreCategory TheatreCategory { get; set; }
         public string AppUserId { get; set; }
 
     }

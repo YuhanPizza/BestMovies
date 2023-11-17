@@ -15,19 +15,19 @@ namespace BestMovies.Repository
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
-        public async Task<List<Club>> GetAllUserClubs()
+        public async Task<List<Theatre>> GetAllUserTheatres()
         {
             //var curUser = _httpContextAccessor.HttpContext?.User;
             var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
-            var userClubs = _context.Clubs.Where(r => r.AppUser.Id == curUser.ToString());
+            IQueryable<Theatre> userClubs = _context.Theatres.Where(r => r.AppUser.Id == curUser.ToString());
             return userClubs.ToList();
         }
 
-        public async Task<List<Race>> GetAllUserRaces()
+        public async Task<List<Movie>> GetAllUserMovies()
         {
             var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
-            var userRaces = _context.Races.Where(r => r.AppUser.Id == curUser.ToString());
-            return userRaces.ToList();
+            IQueryable<Movie> userMovies = _context.Movies.Where(r => r.AppUser.Id == curUser.ToString());
+            return userMovies.ToList();
         }
         public async Task<AppUser> GetUserById(string id)
         {
