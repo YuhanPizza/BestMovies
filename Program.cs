@@ -7,6 +7,9 @@ using BestMovies.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+//when testing : testing is an art, its up to your discretion which or what you wanna test. You shouldnt test everything
+//realistically you should only test things that are changing alot and are critical to your application. 
+//test controllers
 
 //whole idea of aspdotnet its flexible and there is alot of boilerplate/infastructure for you but you still have to do alot of work to go with it.
 //identity will do alot of work for you

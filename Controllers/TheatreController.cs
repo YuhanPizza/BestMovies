@@ -33,8 +33,11 @@ namespace BestMovies.Controllers
             Theatre theatre = await _theatreRepository.GetByIdAsync(id);
             return View(theatre);
         }
+        //cannot be tested because it is static
         public IActionResult Create() //can be syncronous 
         {
+            //GetUserId cannot be tested because it is an extension method,
+            //extension methods cannot be tested because they are static.
             var curUserId = _httpContextAccessor.HttpContext.User.GetUserId();
             var createTheatreViewModel = new CreateTheatreViewModel
             {
