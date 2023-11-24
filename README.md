@@ -1,4 +1,4 @@
-# BestMovies🎬🍿
+# BestMovies🎬🍿 [Currently Running Unit Tests!]
 
 Welcome to BestMovies, a delightful web application crafted with love using ASP.NET MVC and Entity Framework 6.0 with Identity. 🚀
 
