@@ -80,5 +80,17 @@ namespace BestMovies.Test.ControllerTest
 			//Assert
 			result.Should().BeOfType<Task<IActionResult>>();
 		}
+		[Fact]
+		public void TheatreController_Delete_ReturnsSuccess()
+		{
+			//Arange
+			var id = 1;
+			var theatre = A.Fake<Theatre>();
+			A.CallTo(() => _theatreRepository.GetByIdAsync(id)).Returns(theatre);
+			//Act
+			var result = _theatreController.Delete(id);
+			//Assert
+			result.Should().BeOfType<Task<IActionResult>>();
+		}
 	}
 }
