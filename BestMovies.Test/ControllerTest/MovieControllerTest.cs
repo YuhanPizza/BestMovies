@@ -58,6 +58,17 @@ namespace BestMovies.Test.ControllerTest
 			//Asser
 			result.Should().BeOfType<Task<IActionResult>>();
 		}
-
+		[Fact]
+		public void MovieController_Edit_ReturnsSuccess()
+		{
+			//Arange
+			var id = 1;
+			var movie = A.Fake<Movie>();
+			A.CallTo(() => _movieRepository.GetByIdAsync(id)).Returns(movie);
+			//Act
+			var result = _movieController.Edit(id);
+			//Assert
+			result.Should().BeOfType<Task<IActionResult>>();
+		}
 	}
 }
