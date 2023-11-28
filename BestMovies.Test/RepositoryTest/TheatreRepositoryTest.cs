@@ -92,5 +92,37 @@ namespace BestMovies.Test.RepositoryTest
 			result.Should().NotBeNull(); //should be null
 			result.Should().BeOfType<Task<Theatre>>(); //type checking since we dont actullay use real data
 		}
+
+		[Fact]
+		public async void TheatreRepository_Delete_ReturnsBool()
+		{
+			//Arrange
+			var theatre = new Theatre() //create a theatre that we are gonna add to our database
+			{
+				Title = "Cineplex Cinema Empress Walk",
+				Image = "https://res.cloudinary.com/dusfrwsg5/image/upload/v1700191021/Cinema_wpvqfd.png",
+				Description = "This is the description of the first cinema",
+				TheatreCategory = TheatreCategory.DriveIn,
+				Address = new Address()
+				{
+					Street = "123 Main St",
+					City = "Charlotte",
+					State = "NC"
+				}
+			};
+			var dbContext = await GetDbContext(); //use the private function we created
+			dbContext.Theatres.AsNoTracking();// if you get tracking issues 
+			var theatreRepository = new TheatreRepository(dbContext);
+			//if you dont add it first the issue would be that all matching objects will be removed
+			//it will cause an issue because the whole repo will be deleted thus no objects are inside of it
+			theatreRepository.Add(theatre);//adding the obj first so it matches the delete
+
+			//Act
+			var result = theatreRepository.Delete(theatre);//deleting the theatre we just added.
+
+			//ASSERT
+			//fluent assertions
+			result.Should().BeTrue();//test if its returning true
+		}
 	}
 }
