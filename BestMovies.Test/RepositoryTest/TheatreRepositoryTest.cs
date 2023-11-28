@@ -138,5 +138,35 @@ namespace BestMovies.Test.RepositoryTest
 			//Assert
 			result.Should().BeOfType<Task<IEnumerable<Theatre>>>();
 		}
+		[Fact]
+		public async void TheatreRepository_Update_ReturnsBool()
+		{
+			//Arrange
+			var theatre = new Theatre() //create a theatre that we are gonna add to our database
+			{
+				Title = "Cineplex Cinema Empress Walk",
+				Image = "https://res.cloudinary.com/dusfrwsg5/image/upload/v1700191021/Cinema_wpvqfd.png",
+				Description = "This is the description of the first cinema",
+				TheatreCategory = TheatreCategory.IMAX,
+				Address = new Address()
+				{
+					Street = "123 Main St",
+					City = "Charlotte",
+					State = "NC"
+				}
+			};
+			var dbContext = await GetDbContext(); //use the private function we created
+			dbContext.Theatres.AsNoTracking();// if you get tracking issues 
+			var theatreRepository = new TheatreRepository(dbContext);
+
+			//Act
+			var result = theatreRepository.Update(theatre);
+
+			//ASSERT
+			//fluent assertions
+			result.Should().BeTrue();//test if its returning true
+
+		}
+
 	}
 }

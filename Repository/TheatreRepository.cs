@@ -52,9 +52,9 @@ namespace BestMovies.Repository
             return saved > 0 ? true : false;
         }
 
-        public bool Update(Theatre club)
+        public bool Update(Theatre theatre)
         {
-            _context.Update(club);
+            _context.Update(theatre);
             return Save();
         }
     }
