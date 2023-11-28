@@ -13,9 +13,9 @@ namespace BestMovies.Interfaces
 		Task<IEnumerable<Movie>> GetAllMoviesByCity(string city);
 
         //cruds
-        bool Add(Movie race);
-        bool Update(Movie race);
-        bool Delete(Movie race);
+        bool Add(Movie movie);
+        bool Update(Movie movie);
+        bool Delete(Movie movie);
         bool Save();
     }
 }

@@ -12,7 +12,7 @@ using FluentAssertions;
 
 namespace BestMovies.Test.RepositoryTest
 {
-	internal class MovieRepositoryTest
+	public class MovieRepositoryTest
 	{
 		private async Task<ApplicationDbContext> GetDbContext()
 		{
@@ -74,6 +74,21 @@ namespace BestMovies.Test.RepositoryTest
 			//fluent assertions
 			result.Should().BeTrue();//test if its returning true
 
+		}
+		[Fact]
+		public async void MovieRepository_GetByIdAsync_ReturnsMovie() //testing getbyidAsync
+		{
+			//Arrange
+			var id = 1;
+			var dbContext = await GetDbContext(); // we bring in our context
+			var movieRepository = new MovieRepository(dbContext); //the constructor requires that we pass in that context
+
+			//Act
+			var result = movieRepository.GetByIdAsync(id);
+
+			//Assert
+			result.Should().NotBeNull(); //should be null
+			result.Should().BeOfType<Task<Movie>>(); //type checking since we dont actullay use real data
 		}
 	}
 }

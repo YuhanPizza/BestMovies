@@ -48,9 +48,9 @@ namespace BestMovies.Repository
             return saved > 0 ? true: false;
         }
 
-        public bool Update(Movie race)
+        public bool Update(Movie movie)
         {
-            _context.Update(race);
+            _context.Update(movie);
             return Save();
         }
     }
