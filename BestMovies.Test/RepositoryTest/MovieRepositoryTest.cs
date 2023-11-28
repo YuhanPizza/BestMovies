@@ -90,5 +90,38 @@ namespace BestMovies.Test.RepositoryTest
 			result.Should().NotBeNull(); //should be null
 			result.Should().BeOfType<Task<Movie>>(); //type checking since we dont actullay use real data
 		}
+
+		[Fact]
+		public async void MovieRepository_Delete_ReturnsBool()
+		{
+			//Arrange
+			var movie = new Movie() //create a theatre that we are gonna add to our database
+			{
+				Title = "Jon Wick",
+				Image = "https://assets.aboutamazon.com/dims4/default/7856190/2147483647/strip/true/crop/1919x1080+1+0/resize/1320x743!/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2F7f%2Fe6%2Fb76966994e56a97dbeba44f56009%2Fbarbie-hero.jpg",
+				Description = "This is the description of the first movie",
+				MovieCategory = MovieCategory.Action,
+				AddressId = 5,
+				Address = new Address()
+				{
+					Street = "123 Main St",
+					City = "Charlotte",
+					State = "NC"
+				}
+			};
+			var dbContext = await GetDbContext(); //use the private function we created
+			dbContext.Movies.AsNoTracking();// if you get tracking issues 
+			var movieRepository = new MovieRepository(dbContext);
+			//if you dont add it first the issue would be that all matching objects will be removed
+			//it will cause an issue because the whole repo will be deleted thus no objects are inside of it
+			movieRepository.Add(movie);//adding the obj first so it matches the delete
+
+			//Act
+			var result = movieRepository.Delete(movie);//deleting the theatre we just added.
+
+			//ASSERT
+			//fluent assertions
+			result.Should().BeTrue();//test if its returning true
+		}
 	}
 }
