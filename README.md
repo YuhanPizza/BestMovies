@@ -71,6 +71,12 @@ Discover movie theaters and films in your area based on your IP address. BestMov
 ### Unit Testing [In Progress]
 I use xUnit, FakeItEasy and Fluent Assertions.
 
+- **[xUnit](https://xunit.net/):** A testing framework that keeps things simple and snappy. 🚦
+
+- **[FakeItEasy](https://fakeiteasy.github.io/):** Our backstage pass to mocking – perfect for faking it 'til you make it! 🎭
+
+- **[Fluent Assertions](https://fluentassertions.com/introduction):** Making assertions a breeze with a touch of flair. Fluent and fabulous! 💬
+
 ## MVC Controller
 
 **TheatreController:** All Test Passed!
