@@ -123,5 +123,19 @@ namespace BestMovies.Test.RepositoryTest
 			//fluent assertions
 			result.Should().BeTrue();//test if its returning true
 		}
+
+		[Fact]
+		public async void MovieRepository_GetAll_ReturnsList()
+		{
+			//Arrange
+			var dbContext = await GetDbContext();
+			dbContext.Movies.AsNoTracking();
+			var movieRepository = new MovieRepository(dbContext);
+			//Act
+			var result = movieRepository.GetAll();
+
+			//Assert
+			result.Should().BeOfType<Task<IEnumerable<Movie>>>();
+		}
 	}
 }
