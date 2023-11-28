@@ -165,7 +165,6 @@ namespace BestMovies.Test.RepositoryTest
 			//ASSERT
 			//fluent assertions
 			result.Should().BeTrue();//test if its returning true
-
 		}
 
 	}
