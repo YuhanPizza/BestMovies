@@ -68,6 +68,42 @@ Discover movie theaters and films in your area based on your IP address. BestMov
 
 - Separate folders for each model containing views for different actions.
 
+### Unit Testing [In Progress]
+I use xUnit, FakeItEasy and Fluent Assertions.
+
+## MVC Controller
+
+**TheatreController:** All Test Passed!
+
+- Index() Passed!
+- Detail() Passed!
+- Edit() Passed!
+- Delete() Passed!
+
+**MovieController:** All Test Passed!
+
+- Index() Passed!
+- Detail() Passed!
+- Edit() Passed!
+- Delete() Passed!
+
+## Repository Test
+
+**TheatreRepository:** All Test Passed!
+
+- Add() Passed!
+- GetByIdAsync() Passed!
+- Delete() Passed!
+- GetAll() Passed!
+- Update() Passed!
+  
+**MovieRepository:** All Test Passed!
+
+- Add() Passed!
+- GetByIdAsync() Passed!
+- Delete() Passed!
+- GetAll() Passed!
+- Update() Passed!
 
 ## License 📜
 
