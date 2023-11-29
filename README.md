@@ -1,4 +1,4 @@
-# BestMovies🎬🍿 [Currently Running Unit Tests!]
+# BestMovies🎬🍿 [with Unit Tests!]
 
 Welcome to BestMovies, a delightful web application crafted with love using ASP.NET MVC and Entity Framework 6.0 with Identity. 🚀
 
@@ -68,7 +68,7 @@ Discover movie theaters and films in your area based on your IP address. BestMov
 
 - Separate folders for each model containing views for different actions.
 
-### Unit Testing [In Progress]
+### Unit Testing 
 I use xUnit, FakeItEasy and Fluent Assertions.
 
 - **[xUnit](https://xunit.net/):** A testing framework that keeps things simple and snappy. 🚦
