@@ -45,6 +45,9 @@ Discover movie theaters and films in your area based on your IP address. BestMov
 
 ### Repository 🗄️
 
+![AdminMovies](https://github.com/YuhanPizza/BestMovies/assets/107896556/0fcf9dc2-b7d1-4aa4-9fbb-04652cac4bc1)
+
+
 - **DashboardRepository:** Responsible for dashboard-related operations.
 - **MovieRepository:** The guardian of movie-related operations.
 - **TheatreRepository:** The keeper of theater-related operations.
@@ -53,7 +56,6 @@ Discover movie theaters and films in your area based on your IP address. BestMov
 ### Services 🛠️
 
 - **PhotoService:** ![UserView](https://github.com/YuhanPizza/BestMovies/assets/107896556/9ff4592a-e1ca-4334-add3-7e02a714ef3e)
-- 
 A trusted companion for handling image-related operations.
 
 ### Enums 🌈
