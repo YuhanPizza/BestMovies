@@ -1,5 +1,7 @@
 # BestMovies🎬🍿 [with Unit Tests!]
 
+![IPinfo(HomePage)](https://github.com/YuhanPizza/BestMovies/assets/107896556/f6d1f4bc-e785-434d-a09b-b38a0470faa7)
+
 Welcome to BestMovies, a delightful web application crafted with love using ASP.NET MVC and Entity Framework 6.0 with Identity. 🚀
 
 ## Explore Cinematic Wonders Near You 🌍
@@ -22,6 +24,8 @@ Discover movie theaters and films in your area based on your IP address. BestMov
 
 ### Controllers 🎮
 
+![LoginPage](https://github.com/YuhanPizza/BestMovies/assets/107896556/cc0b8a52-b03d-4b2d-a281-85dcd7c9b970)
+
 - **AccountController:** Your go-to for handling user authentication (Login, Register).
 - **DashboardController:** Powers user dashboard-related functionalities.
 - **HomeController:** The conductor for the main landing page.
@@ -30,6 +34,8 @@ Discover movie theaters and films in your area based on your IP address. BestMov
 - **UserController:** The maestro for user-related operations.
 
 ### Model 🎨
+
+![RegisterPage](https://github.com/YuhanPizza/BestMovies/assets/107896556/d3b49952-8690-4007-8dac-17be4ac8bc1c)
 
 - **Address:** A model for storing address information.
 - **AppUsers:** The heart of the application, representing our beloved users.
@@ -46,7 +52,9 @@ Discover movie theaters and films in your area based on your IP address. BestMov
 
 ### Services 🛠️
 
-- **PhotoService:** A trusted companion for handling image-related operations.
+- **PhotoService:** ![UserView](https://github.com/YuhanPizza/BestMovies/assets/107896556/9ff4592a-e1ca-4334-add3-7e02a714ef3e)
+- 
+A trusted companion for handling image-related operations.
 
 ### Enums 🌈
 
@@ -65,6 +73,10 @@ Discover movie theaters and films in your area based on your IP address. BestMov
 - **IUserRepository:** The compass for the user repository.
 
 ### Views 👀
+
+![TheatrePage](https://github.com/YuhanPizza/BestMovies/assets/107896556/0943bb36-e663-4c45-869c-0e71adf6fa99)
+
+![TheatreViewPage](https://github.com/YuhanPizza/BestMovies/assets/107896556/45a2d718-0c20-4fef-8dad-7d2af2d3b05c)
 
 - Separate folders for each model containing views for different actions.
 
