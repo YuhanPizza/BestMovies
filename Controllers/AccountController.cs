@@ -80,11 +80,12 @@ namespace BestMovies.Controllers
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerViewModel.Password);
 
-            if(newUserResponse.Succeeded)
+            if(!newUserResponse.Succeeded)
             {
-                await _userManager.AddToRoleAsync(newUser, UserRoles.User);
-            }
-            return RedirectToAction("Index", "Home");
+				return View(registerViewModel);
+			}
+			await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+			return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public async Task<IActionResult> Logout()

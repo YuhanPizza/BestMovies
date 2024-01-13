@@ -127,14 +127,14 @@ namespace BestMovies.Data
 
                 //Users
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
-                string adminUserEmail = "teddysmithdeveloper@gmail.com";
+                string adminUserEmail = "Potato@gmail.com";
 
                 var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
                 if (adminUser == null)
                 {
                     var newAdminUser = new AppUser()
                     {
-                        UserName = "teddysmithdev",
+                        UserName = "Potato",
                         Email = adminUserEmail,
                         EmailConfirmed = true,
                         Address = new Address()
@@ -144,7 +144,7 @@ namespace BestMovies.Data
                             State = "NC"
                         }
                     };
-                    await userManager.CreateAsync(newAdminUser, "Coding@1234?");
+                    await userManager.CreateAsync(newAdminUser, "Potato@123!");
                     await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
                 }
 
@@ -165,7 +165,7 @@ namespace BestMovies.Data
                             State = "NC"
                         }
                     };
-                    await userManager.CreateAsync(newAppUser, "Coding@1234?");
+                    await userManager.CreateAsync(newAppUser, "Potato@123!");
                     await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
                 }
             }

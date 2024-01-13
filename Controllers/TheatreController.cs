@@ -96,12 +96,22 @@ namespace BestMovies.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(int id, EditTheatreViewModel theatreVM)
         {
-            if (!ModelState.IsValid)
-            {
-                ModelState.AddModelError("", "Failed to edit Theatre");
-                return View("Edit", theatreVM);
-            }
-            var userTheatre = await _theatreRepository.GetByIdAsyncNoTracking(id); //used getbyidasyncnotracking so it wont hit itself because that is being tracked at the moment it is being edited
+			if (!ModelState.IsValid)
+			{
+				foreach (var modelStateKey in ModelState.Keys)
+				{
+					var modelStateVal = ModelState[modelStateKey];
+					foreach (var error in modelStateVal.Errors)
+					{
+						// Log or print the error messages
+						Console.WriteLine($"Key: {modelStateKey}, Error: {error.ErrorMessage}");
+					}
+				}
+
+				// Return to the view with the invalid model
+				return View("Edit", theatreVM);
+			}
+			var userTheatre = await _theatreRepository.GetByIdAsyncNoTracking(id); //used getbyidasyncnotracking so it wont hit itself because that is being tracked at the moment it is being edited
             if(userTheatre != null) {
                 try
                 {
